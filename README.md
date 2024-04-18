@@ -30,6 +30,7 @@
 **Node.JS Modules**
 - Module is a set of functions. (like js libraries such as Math).
 - 3 types of modules
-  1> Local Modules (Own created modules)
-  2> Built-in Modules (node.js own modules) - http, url, path, fs, [no need to install this modules]
-  3> External Modules (managed by **npm**)
+
+  > 1. Local Modules (Own created modules)
+  > 2. Built-in Modules (node.js own modules) - http, url, path, fs, [no need to install this modules]
+  > 3. External Modules (managed by **npm**)
