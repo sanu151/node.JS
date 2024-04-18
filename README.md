@@ -26,3 +26,10 @@
 - Download and Install: Download and install Node.js from the official website: *https://nodejs.org/en*
 - Write JavaScript Code: Use a text editor or IDE to write JavaScript code for our application.
 - Run the Code: Use the node command followed by our JavaScript file name to execute it (e.g., node app.js).
+
+**Node.JS Modules**
+- Module is a set of functions. (like js libraries such as Math).
+- 3 types of modules
+  1> Local Modules (Own created modules)
+  2> Built-in Modules (node.js own modules) - http, url, path, fs, [no need to install this modules]
+  3> External Modules (managed by **npm**)
