@@ -42,9 +42,13 @@
 - **writeFile(path, data, options, callback)**: Writes data asynchronously to a file at the specified path.
 
 > _path_:   The file path where you want to write the data.
+
 > _data_:   The data to be written to the file (can be a string, buffer, or an object).
+
 > _options (optional)_:   An object containing options for the write operation.
+
 > _callback (optional)_:   A function that gets called when the write operation is complete (or if there's an error). It receives an error object (if any) as the first argument.
+
 > _appendFile(path, data, options, callback)_:   Appends data asynchronously to a file at the specified path. Similar to writeFile but adds data to the end of the file if it already exists.
 
 - **readFile(path, options, callback)**: Reads the contents of a file asynchronously at the specified path.
