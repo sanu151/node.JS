@@ -35,7 +35,163 @@
   > 2. Built-in Modules (node.js own modules) - http, url, path, fs, [no need to install this modules]
   > 3. External Modules (managed by **npm**)
 
-**fs - File System methods :**
+
+**Local Modules (Our Own Created Modules)**
+
+In Node.js, local modules are code reusability units that **we** create for our own projects. They are JavaScript files containing functions, variables, or classes that **we can** import and use in other parts of our application.
+
+*Creating Local Modules:*
+
+1. **File Structure:** **We can** create a separate JavaScript file for our module.  **We can** name it descriptively to reflect its functionality (e.g., `mathFunctions.js`, `dataAccess.js`).
+
+2. **Module Content:** Inside the file, **we define** the functions, variables, or classes that **we want** to expose as part of our module. 
+
+*Example:*
+
+```javascript
+// mathFunctions.js
+
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+// Exporting functions (more on this in a bit)
+module.exports = {
+  add,
+  subtract
+};
+```
+
+In this example, **we define** two functions `add` and `subtract` in the `mathFunctions.js` file.
+
+*Importing Local Modules:*
+
+To use the functions from our local module in another JavaScript file, **we use** the `require` function:
+
+```javascript
+// app.js
+
+const math = require('./mathFunctions.js'); // Assuming mathFunctions.js is in the same directory
+
+const result1 = math.add(5, 3);
+const result2 = math.subtract(10, 2);
+
+console.log(result1); // Output: 8
+console.log(result2); // Output: 8
+```
+
+Here, **we import** the `mathFunctions.js` module using `require` and assign it to the `math` variable. Then, **we can access** the exported functions (`add` and `subtract`) using dot notation.
+
+*Exporting from Modules:*
+
+By default, everything in a JavaScript file is considered private. To make functions, variables, or classes accessible from other files, **we need to export them explicitly**. There are two common ways to do this:
+
+1. **Named Exports:** **We can export** specific functions or variables by assigning them to the `module.exports` object:
+
+```javascript
+// mathFunctions.js (example with named exports)
+
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+module.exports = {
+  add,
+  subtract
+};
+```
+
+2. **Default Export:** **We can export** a single value (function, object, etc.) as the default export using the `export default` syntax:
+
+```javascript
+// mathFunctions.js (example with default export)
+
+export default function add(a, b) {
+  return a + b;
+}
+```
+
+Then, when importing, **we can use** a different name for the imported value:
+
+```javascript
+// app.js (importing default export)
+
+const myAddFunction = require('./mathFunctions.js');
+
+const result = myAddFunction(4, 7);
+console.log(result); // Output: 11
+```
+
+*Benefits of Local Modules:*
+
+- **Code Reusability:** Local modules allow **us to** break down our code into smaller, reusable units, promoting better organization and reducing code duplication.
+- **Improved Maintainability:** By separating functionalities into modules, our code becomes easier to understand, maintain, and modify.
+- **Modular Design:** Local modules encourage a modular design approach, making our application more scalable and easier to test.
+
+*When to Use Local Modules:*
+
+- When **we have** a set of related functions or functionalities that can be reused in multiple parts of our application.
+- When **we want** to improve code organization and maintainability.
+- When **we want** to create a library of reusable components for our project.
+
+By effectively using local modules, **we can** write cleaner, more maintainable, and scalable Node.js applications.
+
+
+**Built-in Modules (Node.js's Own Modules)**
+
+Built-in modules are a core feature of Node.js that provide essential functionalities for various tasks. These modules come pre-installed with Node.js and don't require additional installation. Here's a breakdown of some commonly used built-in modules:
+
+*Common Built-in Modules:*
+
+* **`fs` (file system):** This module provides functions for interacting with the file system, allowing **us to** read, write, create, delete, and manipulate files and directories.
+* **`http` (Hypertext Transfer Protocol):** This module enables **us to** build web servers and make HTTP requests. It allows **us to** create servers that can handle incoming HTTP requests and send responses.
+* **`https` (Secure Hypertext Transfer Protocol):** Similar to `http` but provides functionality for secure communication using HTTPS.
+* **`path`:** This module offers utilities for manipulating file and directory paths. It helps **us** construct valid paths, extract components like filename and extension, and check if a path is absolute or relative.
+* **`os`:** This module provides access to information about the operating system our Node.js application is running on. **We can** get details like hostname, architecture, uptime, and free memory.
+* **`events`:** This module is crucial for implementing the event-driven architecture in Node.js. It allows **us to** create event emitters, listen for events, and trigger them, enabling communication between different parts of our application.
+* **`timers`:** This module provides functions for scheduling asynchronous timers. **We can** use it to set up delays, timeouts, and periodic execution of tasks.
+* **`readline`:** This module simplifies working with readable streams like standard input, allowing **us to** read user input line by line.
+* **`stream`:** This module provides a foundation for working with streams of data, which is a common pattern in Node.js for handling large amounts of data efficiently.
+
+*Benefits of Built-in Modules:*
+
+* **Convenience:** Built-in modules are readily available and don't require additional installation steps, saving **us** development time.
+* **Standardization:** These modules provide consistent APIs across different Node.js environments, ensuring code portability.
+* **Reliability:** Being part of the core Node.js distribution, built-in modules are well-tested and reliable components.
+
+*Finding Built-in Modules:*
+
+The complete list of built-in modules is extensive. **We can** find the official documentation for each module on the Node.js website: [https://nodejs.org/en/docs](https://nodejs.org/en/docs)
+
+*Example (using `http` module):*
+
+```javascript
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('Hello World!');
+  res.end();
+});
+
+server.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+```
+
+In this example, **we use** the `http` module to create a simple web server that listens on port 3000 and responds with "Hello World!" when a request is received.
+
+By understanding and using built-in modules effectively, **we can** streamline our Node.js development process and create robust applications without reinventing the wheel.
+
+**fs Module Functions :**
 
 *Asynchronous Functions (return control before operation completes):*
 
@@ -54,49 +210,12 @@
 | `unlinkSync(path)` | Deletes a file (synchronous). | No | Yes | Blocks the event loop until deletion completes. |
 | `existsSync(path)` | Checks if a file or directory exists (synchronous). | No | Yes | Returns a boolean (true if exists, false otherwise). |
 
-**General Recommendations:**
+*General Recommendations:*
 
 - Use asynchronous functions for most cases to avoid blocking the event loop.
 - Use synchronous functions cautiously as they can impact performance.
 - Handle errors using callbacks or returned error objects.
 - Consider promises or async/await for cleaner asynchronous handling in modern Node.js development.
-
-
-- **writeFile(path, data, options, callback)**: Writes data asynchronously to a file at the specified path.
-
-> _path_:   The file path where you want to write the data.
-
-> _data_:   The data to be written to the file (can be a string, buffer, or an object).
-
-> _options (optional)_:   An object containing options for the write operation.
-
-> _callback (optional)_:   A function that gets called when the write operation is complete (or if there's an error). It receives an error object (if any) as the first argument.
-
-> _appendFile(path, data, options, callback)_:   Appends data asynchronously to a file at the specified path. Similar to writeFile but adds data to the end of the file if it already exists.
-
-- **readFile(path, options, callback)**: Reads the contents of a file asynchronously at the specified path.
-
-> _callback_:   A function that gets called when the read operation is complete (or if there's an error). It receives an error object (if any) as the first argument and the data from the file (as a string or buffer) as the second argument.
-
-- **rename(oldPath, newPath, callback)**: Renames a file or directory asynchronously.
-
-- **unlink(path, callback)**: Deletes a file asynchronously at the specified path.
-
-- **exists(path, callback)**: Checks if a file or directory exists asynchronously at the specified path. The callback receives a boolean value (true if the file exists, false otherwise).
-
-*Synchronous Functions (return control after operation completes):*
-
-- **writeFileSync(path, data, options)**: Writes data synchronously to a file at the specified path. This function blocks the event loop until the write operation is complete.
-
-- **appendFileSync(path, data, options)**: Appends data synchronously to a file at the specified path. Similar to writeFileSync but for appending data.
-
-- **readFileSync(path, options)**: Reads the contents of a file synchronously at the specified path. This function blocks the event loop until the read operation is complete and returns the data from the file (as a string or buffer).
-
-- **renameSync(oldPath, newPath)**: Renames a file or directory synchronously.
-
-- **unlinkSync(path)**: Deletes a file synchronously at the specified path.
-
-- **existsSync(path)**: Checks if a file or directory exists synchronously at the specified path. This function returns a boolean value (true if the file exists, false otherwise).
 
 *Choosing Between Asynchronous and Synchronous Functions:*
 
@@ -107,3 +226,31 @@
 
 - Always handle potential errors using the callback function for asynchronous operations or by checking the returned value (error object) for synchronous functions.
 - Consider using promises or async/await for a cleaner way to handle asynchronous operations in modern Node.js development.
+
+**os Module Functions**
+
+| Function | Description |
+|---|---|
+| `os.arch()` | Gets the architecture of the operating system (e.g., 'x64', 'arm'). |
+| `os.cpus()` | Gets an array of objects containing information about the CPU cores. |
+| `os.endianness()` | Gets the endianness of the system ('BE' for big-endian, 'LE' for little-endian). |
+| `os.freemem()` | Gets the amount of free memory available on the system. |
+| `os.homedir()` | Gets the user's home directory. |
+| `os.hostname()` | Gets the hostname of the machine. |
+| `os.platform()` | Gets the operating system platform (e.g., 'linux', 'darwin', 'win32'). |
+| `os.tmpdir()` | Gets the system's temporary directory path. |
+| `os.type()` | Gets the operating system name (e.g., 'Linux', 'Darwin', 'Windows_NT'). |
+| `os.uptime()` | Gets the system uptime in seconds. |
+
+**path Module Functions**
+
+| Function | Description |
+|---|---|
+| `path.join(...paths)` | Joins multiple path segments into a single path string. |
+| `path.normalize(path)` | Normalizes a path by resolving symbolic links, extraneous separators, etc. |
+| `path.parse(path)` | Parses a path string into an object with components like directory name, filename, extension, etc. |
+| `path.basename(path)` | Gets the filename from a path string. |
+| `path.dirname(path)` | Gets the directory name from a path string. |
+| `path.extname(path)` | Get the file extension from a path string. |
+| `path.isAbsolute(path)` | Check if a path is absolute. |
+| `path.relative(from, to)` | Get the relative path from one path to another. |
