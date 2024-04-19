@@ -34,3 +34,48 @@
   > 1. Local Modules (Own created modules)
   > 2. Built-in Modules (node.js own modules) - http, url, path, fs, [no need to install this modules]
   > 3. External Modules (managed by **npm**)
+
+**fs - File System methods :**
+*Asynchronous Functions (return control before operation completes):*
+
+- writeFile(path, data, options, callback): Writes data asynchronously to a file at the specified path.
+
+> path: The file path where you want to write the data.
+> data: The data to be written to the file (can be a string, buffer, or an object).
+> options (optional): An object containing options for the write operation.
+> callback (optional): A function that gets called when the write operation is complete (or if there's an error). It receives an error object (if any) as the first argument.
+> appendFile(path, data, options, callback): Appends data asynchronously to a file at the specified path. Similar to writeFile but adds data to the end of the file if it already exists.
+
+- readFile(path, options, callback): Reads the contents of a file asynchronously at the specified path.
+
+> callback: A function that gets called when the read operation is complete (or if there's an error). It receives an error object (if any) as the first argument and the data from the file (as a string or buffer) as the second argument.
+
+- rename(oldPath, newPath, callback): Renames a file or directory asynchronously.
+
+- unlink(path, callback): Deletes a file asynchronously at the specified path.
+
+- exists(path, callback): Checks if a file or directory exists asynchronously at the specified path. The callback receives a boolean value (true if the file exists, false otherwise).
+
+*Synchronous Functions (return control after operation completes):*
+
+- writeFileSync(path, data, options): Writes data synchronously to a file at the specified path. This function blocks the event loop until the write operation is complete.
+
+- appendFileSync(path, data, options): Appends data synchronously to a file at the specified path. Similar to writeFileSync but for appending data.
+
+- readFileSync(path, options): Reads the contents of a file synchronously at the specified path. This function blocks the event loop until the read operation is complete and returns the data from the file (as a string or buffer).
+
+- renameSync(oldPath, newPath): Renames a file or directory synchronously.
+
+- unlinkSync(path): Deletes a file synchronously at the specified path.
+
+- existsSync(path): Checks if a file or directory exists synchronously at the specified path. This function returns a boolean value (true if the file exists, false otherwise).
+
+*Choosing Between Asynchronous and Synchronous Functions:*
+
+- Asynchronous functions are generally preferred for most Node.js applications because they don't block the event loop, allowing your application to remain responsive while file operations are happening in the background.
+- Synchronous functions can be simpler to use but can block the event loop, potentially impacting the performance of your application if used extensively. They are typically used in scenarios where you need to ensure the file operation completes before proceeding further in your code (e.g., reading a configuration file before starting the server).
+  
+*Additional Notes:*
+
+- Always handle potential errors using the callback function for asynchronous operations or by checking the returned value (error object) for synchronous functions.
+- Consider using promises or async/await for a cleaner way to handle asynchronous operations in modern Node.js development.
