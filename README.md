@@ -39,6 +39,29 @@
 
 *Asynchronous Functions (return control before operation completes):*
 
+| Function | Description | Asynchronous | Synchronous | Notes |
+|---|---|---|---|---|
+| `writeFile(path, data, options, callback)` | Writes data to a file. | Yes | No | - `path`: File path to write to. - `data`: Data to write (string, buffer, object). - `options` (optional): Options for writing. - `callback` (optional): Function called after write operation (error object as first argument). |
+| `appendFile(path, data, options, callback)` | Appends data to a file. | Yes | No | Similar to `writeFile` but adds data to the end of an existing file. |
+| `readFile(path, options, callback)` | Reads the contents of a file. | Yes | No | - `callback`: Function called after read operation (error object, data as string or buffer). |
+| `rename(oldPath, newPath, callback)` | Renames a file or directory. | Yes | No | - Renames the file at `oldPath` to `newPath`. |
+| `unlink(path, callback)` | Deletes a file. | Yes | No | Deletes the file at the specified `path`. |
+| `exists(path, callback)` | Checks if a file or directory exists. | Yes | No | - `callback` receives a boolean (true if exists, false otherwise). |
+| `writeFileSync(path, data, options)` | Writes data to a file (synchronous). | No | Yes | Blocks the event loop until write completes. |
+| `appendFileSync(path, data, options)` | Appends data to a file (synchronous). | No | Yes | Similar to `writeFileSync` but for appending data. |
+| `readFileSync(path, options)` | Reads the contents of a file (synchronous). | No | Yes | Blocks the event loop until read completes, returns data (string or buffer). |
+| `renameSync(oldPath, newPath)` | Renames a file or directory (synchronous). | No | Yes | Blocks the event loop until rename completes. |
+| `unlinkSync(path)` | Deletes a file (synchronous). | No | Yes | Blocks the event loop until deletion completes. |
+| `existsSync(path)` | Checks if a file or directory exists (synchronous). | No | Yes | Returns a boolean (true if exists, false otherwise). |
+
+**General Recommendations:**
+
+- Use asynchronous functions for most cases to avoid blocking the event loop.
+- Use synchronous functions cautiously as they can impact performance.
+- Handle errors using callbacks or returned error objects.
+- Consider promises or async/await for cleaner asynchronous handling in modern Node.js development.
+
+
 - **writeFile(path, data, options, callback)**: Writes data asynchronously to a file at the specified path.
 
 > _path_:   The file path where you want to write the data.
