@@ -36,6 +36,7 @@
   > 3. External Modules (managed by **npm**)
 
 **fs - File System methods :**
+
 *Asynchronous Functions (return control before operation completes):*
 
 - writeFile(path, data, options, callback): Writes data asynchronously to a file at the specified path.
