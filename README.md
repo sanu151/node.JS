@@ -374,3 +374,20 @@ When a client sends an HTTP request, the server receives it through the `req` ob
 We use the `res` object to craft the response. We can set the appropriate status code based on the request outcome and write the desired content (HTML, JSON, etc.) to the response body. Finally, we send the response back to the client.
 
 By effectively using these elements, we can build robust web applications that communicate effectively with clients.
+
+**external modules (managed by npm) - nodemon**
+
+*In Node.js, external modules, also known as packages, extend our applications' functionality with reusable code blocks. The Node.js community creates these modules, and we manage them using the Node Package Manager (npm).*
+
+*Benefits of Using External Modules:*
+
+* **Code Reusability:** External modules promote code reusability by allowing us to share code across different projects. We can avoid reinventing the wheel and instead use well-tested, maintained modules for common tasks.
+* **Improved Maintainability:** By breaking down our applications into smaller, modular units, external modules make our code easier to understand, maintain, and modify.
+* **Rich Ecosystem:** The Node.js community has developed a vast ecosystem of external modules for various functionalities. We can find modules for almost anything, from file system manipulation and database access to web frameworks and testing tools.
+
+*Finding External Modules:*
+
+There are numerous external modules available. We can search for them on the npm registry website **([https://docs.npmjs.com/cli/v10/using-npm/registry/](https://docs.npmjs.com/cli/v10/using-npm/registry/))** or by using online resources like **https://npmJS.com**. It's important to choose well-maintained modules with good documentation and a positive community reputation.
+
+By effectively leveraging external modules and npm, we can streamline our Node.js development process, build feature-rich applications faster, and benefit from the collective efforts of the Node.js community.
+
