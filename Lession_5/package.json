@@ -1,0 +1,19 @@
+{
+  "name": "lession_5",
+  "version": "1.0.0",
+  "description": "This is npm testing project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "node.js",
+    "nodemon"
+  ],
+  "author": "Supriyo Das",
+  "license": "ISC",
+  "dependencies": {
+    "random-fruits-name": "^1.10.0"
+  }
+}
